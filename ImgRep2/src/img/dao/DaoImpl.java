@@ -51,7 +51,7 @@ public class DaoImpl implements Dao {
 				+ "values(seq_img.nextval, ?, ?,?, sysdate)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setNString(1,img.getWriter());	
+			pstmt.setString(1,img.getWriter());	
 			pstmt.setString(2, img.getTitle());
 			pstmt.setString(3, img.getPath());
 			pstmt.executeUpdate();
@@ -60,7 +60,7 @@ public class DaoImpl implements Dao {
 			e.printStackTrace();
 		}finally {
 		try {
-			// ÀÚ¿ø ¹ÝÈ¯
+			// ï¿½Ú¿ï¿½ ï¿½ï¿½È¯
 			pstmt.close();
 			conn.close();
 		} catch (SQLException e) {
