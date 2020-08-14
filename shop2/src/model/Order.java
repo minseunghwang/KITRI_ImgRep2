@@ -7,9 +7,9 @@ public class Order {
 	private int pro_num;
 	private int order_num;
 	private int total_price;
-	private String o_id;
-	private Date o_date;
-	private int o_state;
+	private String o_id;		// 주문자 아이디
+	private Date o_date;		// 주문 날짜
+	private int o_state;		// 주문 상태
 	private int d_state;
 	private String prod_name;
 	private String prod_img;

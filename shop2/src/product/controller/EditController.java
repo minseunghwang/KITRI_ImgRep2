@@ -39,7 +39,18 @@ public class EditController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Service service = new ServiceImpl();
 		
+		Product p = new Product();
+		
+		p.setNum(Integer.parseInt(request.getParameter("num")));
+		p.setName(request.getParameter("name"));
+		p.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		p.setPrice(Integer.parseInt(request.getParameter("price")));
+		p.setContent(request.getParameter("content"));
+		
+		service.editProduct(p);
+		response.sendRedirect("/shop2/seller/List");
 	}
 
 	/**

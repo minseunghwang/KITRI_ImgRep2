@@ -13,20 +13,17 @@ public class ServiceImpl implements Service {
 	}
 	@Override
 	public void addOrder(Order o) {
-		// TODO Auto-generated method stub
-		
+		dao.insert(o);
 	}
 
 	@Override
 	public Order getOrder(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.select(num);
 	}
 
 	@Override
 	public ArrayList<Order> orderList(String o_id, int o_state) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectAll(o_id, o_state);
 	}
 
 	@Override

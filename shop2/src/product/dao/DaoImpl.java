@@ -28,8 +28,6 @@ public class DaoImpl implements Dao {
 		
 		PreparedStatement pstmt = null;
 		
-		System.out.println(p);
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, p.getName());
@@ -112,21 +110,80 @@ public class DaoImpl implements Dao {
 	
 
 	public void update(Product p) {
-		// TODO Auto-generated method stub
+		Connection conn = db.getConnection();
 		
-
+		String sql = "update shop_product set name=?, quantity=?, price=?, content=?, where num=?";
 		
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, p.getName());
+			pstmt.setInt(2, p.getQuantity());
+			pstmt.setInt(3, p.getPrice());
+			pstmt.setString(4, p.getContent());
+			pstmt.setInt(5, p.getNum());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
 	}
 
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		Connection conn = db.getConnection();
+		String sql = "delete shop_product where num=?";
+		PreparedStatement pstmt = null;
 		
-	}
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		}
 
 	@Override
 	public int selectNum() {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = db.getConnection();
+		String sql = "select seq_shop_product.nextval from dual";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int num = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(1);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return num;
 	}
 	
 	
@@ -134,8 +191,6 @@ public class DaoImpl implements Dao {
 
 	
 	public ArrayList<Product> selectAll() {
-		// TODO Auto-generated method stub
-		
 		
 		
 		return null;
@@ -144,14 +199,26 @@ public class DaoImpl implements Dao {
 	
 	
 	public void updateQuantity(int q, int num) {
-		// TODO Auto-generated method stub
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
 		
-
+		String sql = "update shop_product set qunatity=quantity-? where num=?";
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, q);
+			pstmt.setInt(2, num);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
-
-
-
-	
-
 }
