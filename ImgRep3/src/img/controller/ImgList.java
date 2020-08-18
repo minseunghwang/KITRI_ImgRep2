@@ -1,6 +1,7 @@
-package controller;
+package img.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberVO;
-import service.Service;
-import service.ServiceImpl;
+import img.service.Service;
+import img.service.ServiceImpl;
+import model.Img;
+
+
 
 /**
- * Servlet implementation class IdCheckController
+ * Servlet implementation class ImgList
  */
-@WebServlet("/IdCheckController")
-public class IdCheckController extends HttpServlet {
+@WebServlet("/ImgList")
+public class ImgList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdCheckController() {
+    public ImgList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,20 +36,13 @@ public class IdCheckController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service service = new ServiceImpl();
-		MemberVO vo = null;
+//		rep.service.Service rep_service = new rep.service.ServiceImpl();
+		ArrayList<Img> imgs = service.getAll();
 		
-		String id = request.getParameter("id");
-		System.out.println(id);
-		vo = service.findMember(id);
-		System.out.println(vo);
-		boolean flag = false;
-		if(vo == null) {
-			flag = true;
-		}
-		request.setAttribute("flag", flag);
-		RequestDispatcher rd = request.getRequestDispatcher("5.check.jsp");
+		request.setAttribute("imgs",imgs);
+		String path = "/imgBoard/imgList.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
-		
 	}
 
 	/**
