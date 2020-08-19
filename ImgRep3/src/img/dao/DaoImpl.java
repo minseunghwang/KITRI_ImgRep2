@@ -129,4 +129,31 @@ public class DaoImpl implements Dao{
 		return 0;
 	}
 
+	@Override
+	public int update(Img img) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update img set writer=?, pwd=?, title=?, u_date=sysdate, where num=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, img.getWriter());
+			pstmt.setString(2, img.getPwd());
+			pstmt.setString(3, img.getTitle());
+			pstmt.setInt(4, img.getNum());
+			pstmt.executeUpdate();
+			return img.getNum();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+
 }

@@ -18,7 +18,6 @@ public class DaoImpl implements Dao {
 		conn = dbconn.getConnection();
 	}
 	public void insert(Rep rep) {
-		// TODO Auto-generated method stub
 		String sql = "insert into reps "
 				+ "values(seq_reps.nextval, ?, ?, ?)";
 		try {
@@ -29,13 +28,11 @@ public class DaoImpl implements Dao {
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public ArrayList<Rep> selectByImg_num(int img_num) {
-		// TODO Auto-generated method stub
 		ResultSet rs = null;
 		ArrayList<Rep> reps = new ArrayList<Rep>();
 		String sql = "select * from reps where img_num=? order by num";
@@ -50,10 +47,8 @@ public class DaoImpl implements Dao {
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return reps;
 	}
 

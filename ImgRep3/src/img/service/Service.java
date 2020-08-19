@@ -10,4 +10,5 @@ public interface Service {
 	int makeNum();
 	Img getImg(int num);
 	int delImg(int num);
+	int editImg(Img i);
 }

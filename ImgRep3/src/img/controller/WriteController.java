@@ -60,15 +60,17 @@ public class WriteController extends HttpServlet {
 				File file = multi.getFile(file1);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		p.setPath("/img/" + img);
 		service.addImg(p);
-		Img i = service.getImg(num);
-		request.setAttribute("i", i);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/imgBoard/addImg.jsp");
-		rd.forward(request, response);
+//		Img i = service.getImg(num);
+//		request.setAttribute("i", i);
+		
+//		RequestDispatcher rd = request.getRequestDispatcher("/imgBoard/addImg.jsp");
+//		rd.forward(request, response);
+		
+		response.sendRedirect("GetController?num="+num);
 	}
 
 	/**

@@ -14,12 +14,10 @@ public class ServiceImpl implements Service {
 	}
 	
 	public void addRep(Rep rep) {
-		// TODO Auto-generated method stub
 		dao.insert(rep);
 	}
 
 	public ArrayList<Rep> getRepsByImg_num(int img_num) {
-		// TODO Auto-generated method stub
 		return dao.selectByImg_num(img_num);
 	}
 

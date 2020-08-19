@@ -10,4 +10,5 @@ public interface Dao {
 	ArrayList<Img> selectAll();
 	Img select(int num);
 	int delete(int num);
+	int update(Img img);
 }

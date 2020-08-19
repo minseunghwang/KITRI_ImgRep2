@@ -10,24 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import img.service.Service;
-import img.service.ServiceImpl;
-import model.Img;
 import model.Rep;
-
-
+import rep.service.Service;
+import rep.service.ServiceImpl;
 
 /**
- * Servlet implementation class ImgList
+ * Servlet implementation class GetReps
  */
-@WebServlet("/ImgList")
-public class ImgList extends HttpServlet {
+@WebServlet("/GetReps")
+public class GetReps extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ImgList() {
+    public GetReps() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,15 +34,10 @@ public class ImgList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service service = new ServiceImpl();
-		rep.service.Service rep_service = new rep.service.ServiceImpl();
-		ArrayList<Img> imgs = service.getAll();
-		for(Img i:imgs) {
-			ArrayList<Rep> reps = rep_service.getRepsByImg_num(i.getNum());
-			i.setReps(reps);
-		}
-		request.setAttribute("imgs",imgs);
-		String path = "/imgBoard/imgList.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(path);
+		int img_num = Integer.parseInt(request.getParameter("img_num"));
+		ArrayList<Rep> reps = service.getRepsByImg_num(img_num);
+		request.setAttribute("reps", reps);
+		RequestDispatcher rd = request.getRequestDispatcher("/imgBoard/repList.jsp");
 		rd.forward(request, response);
 	}
 

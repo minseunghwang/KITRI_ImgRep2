@@ -21,3 +21,5 @@ wrtier varchar2(20),
 content varchar2(500),
 img_num number references img(num) on delete cascade
 );
+
+create sequence seq_reps;
