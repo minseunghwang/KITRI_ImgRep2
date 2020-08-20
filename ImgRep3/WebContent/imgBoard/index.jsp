@@ -8,35 +8,34 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	var makeTbl = function(obj) {
-		var html = "<table id='t_"+obj.num+"' border='1'>";
-		html += "<tr><th>num</th><td>" + obj.num + "</td></tr>";
-		html += "<tr><th>update</th><td><input type='button' value='edit'>";
-		html += "<input type='button' value='delete' num='"+obj.num+"' pwd='"+obj.pwd+"'>";
-		html += "</td></tr>";
-		html += "<tr><th>title</th><td>" + obj.title + "</td></tr>";
-		html += "<tr><th>writer</th><td>" + obj.writer + "</td></tr>";
-		html += "<tr><th>date</th><td>" + obj.u_date + "</td></tr>";
-		html += "<tr><th>img</th><td><img src='"+obj.path+"'width=200 height=200></td></tr>";
-		
-		html += "<tr><th>´ñ±Û</th><td>´ñ±Û:<input type='text' id='r_"+obj.num+"'><br>";
-		html += "ÀÛ¼ºÀÚ:<input type='text' id='w_"+obj.num+"'>";
-		html += "<input type='bueeon' num='"+obj.num+"' value='ÀÛ¼º' class='rep'>";
-		html += "<div id='reps_"+obj.num+"'>";
-		if(obj.reps!="undefined" && obj.reps != null){
-			for(x=0; x<obj.reps.length;x++){
-				html += "´ñ±Û:" +obj.reps[x].content+"(ÀÛ¼ºÀÚ:"+obj.reps[x].writer+")<br>";
-			}
+var makeTbl = function(obj){
+	var html = "<table id='t_"+obj.num+"' border='1'>";
+	html += "<tr><th>num</th><td>"+obj.num+"</td></tr>";
+	html += "<tr><th>update</th><td><input type='button' value='edit' num='"+obj.num+"' pwd='"+obj.pwd+"'>";
+	html += "<input type='button' value='delete' num='"+obj.num+"' pwd='"+obj.pwd+"'>";
+	html += "</td></tr>";
+	html += "<tr><th>title</th><td>"+obj.title+"</td></tr>";
+	html += "<tr><th>writer</th><td>"+obj.writer+"</td></tr>";
+	html += "<tr><th>date</th><td>"+obj.u_date+"</td></tr>";
+	html += "<tr><th>img</th><td><img src='"+obj.path+"' width=200 height=200></td></tr>";
+	html += "<tr><th>´ñ±Û</th><td>´ñ±Û:<input type='text' id='r_"+obj.num+"'><br>";
+	html += "ÀÛ¼ºÀÚ:<input type='text' id='w_"+obj.num+"'>";
+	html += "<input type='button' num='"+obj.num+"' value='ÀÛ¼º' class='rep'>";
+	html += "<div id='reps_"+obj.num+"'>";
+	if(obj.reps!="undefined" && obj.reps!=null){
+		for(x=0;x<obj.reps.length;x++){
+			html+="´ñ±Û:"+obj.reps[x].content+"(ÀÛ¼ºÀÚ:"+obj.reps[x].writer+")<br>";
 		}
-		html += "</div></td></tr>";
-		html += "</table>";
-		return html;
 	}
+	html += "</div></td></tr>";
+	html += "</table>";
+	return html;
+}
 
-	var makeList = function(arr) {
-		for (i = 0; i < arr.length; i++) {
-			var html = makeTbl(arr[i]);
-			$("#imgList").append(html);
+	var makeList = function(arr){
+		for(i=0;i<arr.length;i++){
+			var html =	makeTbl(arr[i]);
+			$("#imglist").append(html);
 		}
 	}
 	
@@ -199,11 +198,6 @@
 			$("#r_"+img_num).val("");
 		});
 	});
-	
-	
-
-	
-	
 </script>
 </head>
 <body>

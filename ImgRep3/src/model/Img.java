@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 public class Img {
 	private int num;
-	private String writer;
+	private String writer; 
 	private String pwd;
-	private String title;
+	private String title;	
 	private String path;
 	private Date u_date;
 	private ArrayList<Rep> reps;
 	
-	public Img() {}
+	public Img(){}
 
+	
 	public Img(int num, String writer, String pwd, String title, String path, Date u_date) {
-		super();
 		this.num = num;
 		this.writer = writer;
 		this.pwd = pwd;
@@ -23,6 +23,17 @@ public class Img {
 		this.path = path;
 		this.u_date = u_date;
 	}
+
+
+	public String getPwd() {
+		return pwd;
+	}
+
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
 
 	public int getNum() {
 		return num;
@@ -32,28 +43,20 @@ public class Img {
 		this.num = num;
 	}
 
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 	public String getPath() {
@@ -82,7 +85,10 @@ public class Img {
 
 	@Override
 	public String toString() {
-		return "Img [num=" + num + ", writer=" + writer + ", pwd=" + pwd + ", title=" + title + ", path=" + path
-				+ ", u_date=" + u_date + "]";
+		return "Img [num=" + num + ", title=" + title + ", writer=" + writer + ", path=" + path + ", u_date=" + u_date
+				+ ", reps=" + reps + "]";
 	}
+
+	
+	
 }

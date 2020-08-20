@@ -42,4 +42,6 @@ public class Rep {
 		return "Rep [num=" + num + ", writer=" + writer + ", content="
 				+ content + ", img_num=" + img_num + "]";
 	}
+	
+	
 }

@@ -38,7 +38,6 @@ public class GetController extends HttpServlet {
 		Img i = service.getImg(num);
 		
 		request.setAttribute("i", i);
-		System.out.println("i :" + i);
 		RequestDispatcher rd = request.getRequestDispatcher("/imgBoard/addImg.jsp");
 		rd.forward(request, response);
 	}
